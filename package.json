@@ -1,0 +1,8 @@
+{
+  "name": "contributions",
+  "version": "0.1.0",
+  "description": "This is a graph, that shows the commits over day to git repo.",
+  "main": "dist",
+  "author": "Jóhan Davidsen",
+  "license": "MIT"
+}
