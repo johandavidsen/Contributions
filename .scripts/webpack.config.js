@@ -2,10 +2,15 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    contributions: './src/Contributions.js',
+    contributionsChart: './src/ContributionsChart.js'
+  },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'contributions.js'
+    filename: '[name].js',
+    libraryTarget: 'umd'
   },
   module: {
     loaders: [
@@ -17,6 +22,10 @@ module.exports = {
         }
       }
     ]
+  },
+  externals: {
+    react: 'react',
+    ReactDOM: 'react-dom'
   },
   stats: {
     colors: true
