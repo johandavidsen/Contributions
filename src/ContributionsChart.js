@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import * as d3 from 'd3'
 import moment from 'moment'
 import { LineChart } from 'react-d3-components'
@@ -33,24 +32,24 @@ class ContributionsChart extends React.Component {
       data: {
         values: [
           { x: new Date(2014, 2, 5), y: 0 },
-          { x: new Date(2014, 3, 5), y: 20 },
-          { x: new Date(2014, 4, 5), y: 10 },
-          { x: new Date(2014, 5, 5), y: 50 },
-          { x: new Date(2014, 6, 5), y: 40 },
-          { x: new Date(2014, 7, 5), y: 10 },
-          { x: new Date(2014, 8, 5), y: 10 },
-          { x: new Date(2014, 9, 5), y: 10 },
-          { x: new Date(2015, 4, 5), y: 10 },
-          { x: new Date(2015, 5, 5), y: 50 },
-          { x: new Date(2015, 6, 5), y: 40 },
-          { x: new Date(2015, 7, 5), y: 10 },
-          { x: new Date(2015, 8, 5), y: 10 },
-          { x: new Date(2015, 9, 5), y: 20 },
-          { x: new Date(2016, 9, 5), y: 50 },
-          { x: new Date(2017, 9, 5), y: 40 },
-          { x: new Date(2018, 9, 5), y: 20 },
-          { x: new Date(2019, 9, 5), y: 30 },
-          { x: new Date(2020, 9, 5), y: 40 }
+          { x: new Date(2014, 3, 5), y: 0 },
+          { x: new Date(2014, 4, 5), y: 0 },
+          { x: new Date(2014, 5, 5), y: 0 },
+          { x: new Date(2014, 6, 5), y: 0 },
+          { x: new Date(2014, 7, 5), y: 0 },
+          { x: new Date(2014, 8, 5), y: 0 },
+          { x: new Date(2014, 9, 5), y: 0 },
+          { x: new Date(2015, 4, 5), y: 0 },
+          { x: new Date(2015, 5, 5), y: 0 },
+          { x: new Date(2015, 6, 5), y: 0 },
+          { x: new Date(2015, 7, 5), y: 0 },
+          { x: new Date(2015, 8, 5), y: 0 },
+          { x: new Date(2015, 9, 5), y: 0 },
+          { x: new Date(2016, 9, 5), y: 0 },
+          { x: new Date(2017, 9, 5), y: 0 },
+          { x: new Date(2018, 9, 5), y: 0 },
+          { x: new Date(2019, 9, 5), y: 0 },
+          { x: new Date(2020, 9, 5), y: 0 }
         ]
       },
       xScale: null,
@@ -86,7 +85,6 @@ class ContributionsChart extends React.Component {
       nextProps.data.forEach((value, key) => {
         newValues.push({ x: new Date(key), y: value })
       })
-      console.log(newValues.length)
       this.setState({ data: { values: newValues }, xScale: xScale, width: width })
       this._handleResize(newValues)
     }
@@ -103,7 +101,7 @@ class ContributionsChart extends React.Component {
    */
   _handleResize (values) {
     const { data } = this.state
-    const element = ReactDOM.findDOMNode(this)
+    const element = this.refs.contributions
     if (element) {
       const width = element.parentNode.offsetWidth
       if (values.type === 'resize') {
@@ -130,7 +128,7 @@ class ContributionsChart extends React.Component {
   render () {
     let { data, width, xScale } = this.state
     return (
-      <div id='contributions'>
+      <div id='contributions' ref='contributions'>
         <LineChart
           data={data}
           width={width}
