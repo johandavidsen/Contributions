@@ -69,14 +69,13 @@ class Contributions extends React.Component {
           if (link) {
             nextPage = link.split(',')[0].split(';')[0][link.split(',')[0].split(';')[0].length - 2]
           }
-          // Filter data by type === 'PushEvent'
-          const contributions = data.filter((entry) => { if (entry.type === 'PushEvent') { return entry } })
-          // // Get currentDate
+
+          // Get currentDate
           const currentDate = new Date()
-          // // Set 3 months back
+          // Set 3 months back
           let oldDate = new Date()
           oldDate.setMonth(oldDate.getMonth() - 3)
-          // // Populate the results
+          // Populate the results
           var itr = moment.twix(oldDate, currentDate).iterate('days')
 
           while (itr.hasNext()) {
@@ -85,7 +84,7 @@ class Contributions extends React.Component {
             stats.set(tempKey, 0)
           }
 
-          contributions.map((contribution) => {
+          data.map((contribution) => {
             // Build date object
             let date = new Date(contribution.created_at)
             // // Build the key
@@ -127,6 +126,7 @@ class Contributions extends React.Component {
   render () {
     // loading, successfull, error,
     const { stats } = this.state
+    console.log(stats)
     return (
       <div>
         <ContributionsChart
