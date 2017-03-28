@@ -1,9 +1,10 @@
+/** global: d3 */
 import React from 'react'
 import * as d3 from 'd3'
 import moment from 'moment'
 import { LineChart } from 'react-d3-components'
 
-// import './Contributions.scss'
+import './Contributions.scss'
 
 /**
  * @class ContributionsChart
@@ -107,12 +108,12 @@ class ContributionsChart extends React.Component {
       if (values.type === 'resize') {
         this.setState({
           width: width,
-          xScale: d3.scaleTime().domain([moment(data.values[0].x), new Date()]).range([0, width])
+          xScale: d3.scaleTime().domain([moment(data.values[0].x), new Date()]).range([0, width + 8])
         })
       } else {
         this.setState({
           width: width,
-          xScale: d3.scaleTime().domain([moment(values[0].x), new Date()]).range([0, width])
+          xScale: d3.scaleTime().domain([moment(values[0].x), new Date()]).range([0, width + 8])
         })
       }
     }
@@ -128,13 +129,14 @@ class ContributionsChart extends React.Component {
   render () {
     let { data, width, xScale } = this.state
     return (
-      <div id='contributions' ref='contributions'>
+      <div className='contributions' ref='contributions'>
         <LineChart
           data={data}
           width={width}
           height={50}
           margin={{ top: 20, bottom: 0, left: 0, right: 0 }}
           xScale={xScale}
+          xAxis={{ className: 'axis' }}
           interpolate='basis'
           />
       </div>

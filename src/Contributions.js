@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import moment from 'moment'
-import twix from 'twix'
+import twix from 'twix' //eslint-disable-line
 import ContributionsChart from './ContributionsChart'
 
 /**
